@@ -1,0 +1,85 @@
+# DAFNI Model definition file for UDM
+#
+# Draft - still needs work.
+#
+apiVersion: v1alpha4
+kind: Model
+metadata:
+  description: ''
+  displayName: Urban Development Model
+  name: udm
+  owner: James Virgo
+  summary: Urban Development
+  type: Forecasting
+spec:
+  command:
+    - python
+    - scripts/udm_solo.py
+  image: <todo>
+
+  inputs:
+    dataslots:
+      - name: in_mce_ras_dbl
+        description: Double precision rasters for cell suitability calculation
+        default:
+          - <todo>
+        path: inputs/
+        required: true
+
+      - name: in_mce_ras_int
+        description: Integer rasters for cell suitability calculation
+        default:
+          - <todo>
+        path: inputs/
+        required: true
+
+      - name: in_params
+        description: General model parameters
+        default:
+          - <todo>
+        path: inputs/
+        required: true
+
+      - name: in_udm_ras
+        description: Integer rasters for UDM
+        default:
+          - <todo>
+        path: inputs/
+        required: true
+
+      - name: in_zonal_density
+        description: Optional density value for each zone
+        default:
+        - <todo>
+        path: inputs/
+        required: false
+
+      - name: in_zonal_pop
+        description: Initial and Final population values for each zone
+        default:
+          - <todo>
+        path: inputs/
+        required: true
+
+      - name: in_zone_order
+        description: Zones ordered by label
+        default:
+          - <todo>
+        path: inputs/
+        required: true
+
+      - name: raster_header
+        description: Header information for .asc raster inputs
+        default:
+          - <todo>
+        path: inputs/
+        required: true
+
+  outputs:
+    datasets:
+      - name: out_cell_dev.asc
+        type: ASC
+      - name: out_cell_metadata.csv
+        type: CSV
+      - name: out_cell_overflow.csv
+        type: CSV
